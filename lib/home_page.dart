@@ -6,12 +6,17 @@ class Homepage extends StatelessWidget {
   final String name = "Tahsin";
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Day2"),
+      ),
+      body: Center(
         child: Container(
           child: Text("Welcome $days flutter course by $name"),
         ),
       ),
+    drawer: Drawer(),
     );
   }
+  
 }
