@@ -12,7 +12,7 @@ class MyDrawer extends StatelessWidget {
         "https://www.facebook.com/aesthetic262/photos/a.123967302337919/123967542337895";
     return Drawer(
       child: Container(
-        color: Colors.red,
+        color: Colors.deepPurple,
         child: ListView(
           children: [
             DrawerHeader(
