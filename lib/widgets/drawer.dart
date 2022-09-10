@@ -9,7 +9,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageUrl =
-        "https://www.facebook.com/aesthetic262/photos/a.123967302337919/123967542337895";
+        "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg";
     return Drawer(
       child: Container(
         color: Colors.deepPurple,
