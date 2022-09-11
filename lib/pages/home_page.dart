@@ -1,3 +1,6 @@
+// ignore_for_file: sort_child_properties_last
+
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -27,11 +30,12 @@ class _HomePageState extends State<HomePage> {
     await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
-    final decodedData = jsonDecode(catalogJson);
-    var productsData = decodedData["products"];
-    CatalogModel.items = List.from(productsData)
-        .map<Item>((item) => Item.fromMap(item))
-        .toList();
+    final decodedData = jsonDecode(catalogJson); //!takes dynamic data from json
+    var productsData = decodedData["products"]; //!make map from dynamic data
+    CatalogModel.items =
+        List.from(productsData) //!convert map to an list of Item Class
+            .map<Item>((item) => Item.fromMap(item))
+            .toList();
     setState(() {});
   }
 
@@ -43,15 +47,43 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-            ? ListView.builder(
-                itemCount: CatalogModel.items.length,
+        child: (CatalogModel.items.isNotEmpty)
+            ? GridView.builder(
+                // ignore: prefer_const_constructors
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return ItemWidget(
-                    item: CatalogModel.items[index],
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GridTile(
+                      header: Container(
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.deepPurple),
+                      ),
+                      child: Image.network(
+                        item.image,
+                      ),
+                      footer: Container(
+                        child: Text(
+                          item.price.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.black),
+                      ),
+                    ),
                   );
-                },
-              )
+                })
             : Center(
                 child: CircularProgressIndicator(),
               ),

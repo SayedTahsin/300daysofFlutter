@@ -1,7 +1,6 @@
 class CatalogModel {
   static List<Item> items=[];
 }
-
 class Item {
   final int id;
   final String name;
@@ -9,7 +8,6 @@ class Item {
   final String color;
   final String image;
   final num price;
-
   Item(
       {required this.id,
       required this.name,
@@ -17,8 +15,8 @@ class Item {
       required this.color,
       required this.image,
       required this.price});
-
-  factory Item.fromMap(Map<String, dynamic> map) {
+  factory Item.fromMap(Map<String, dynamic> map) { 
+    //! takes data from map and convertin to Item Class
     return Item(
       id: map["id"],
       name: map["name"],
@@ -28,7 +26,7 @@ class Item {
       price: map["price"],
     );
   }
-  itMap() => {
+  toMap() => { //! deos opposite of FromMap
         "id": id,
         "name": name,
         "desc": desc,
