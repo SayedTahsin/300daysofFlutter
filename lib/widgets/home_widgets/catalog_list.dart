@@ -17,7 +17,7 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
-        return InkWell(
+        return InkWell( //! MaterialPageRoute 
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -47,7 +47,7 @@ class CatalogItem extends StatelessWidget {
         child: Row(
       //!items will show row wise
       children: [
-        Hero(
+        Hero( //* animation on image
           tag: Key(catalog.id.toString()),
           child: CalatogImage(
             //! for showing image , called constructor
