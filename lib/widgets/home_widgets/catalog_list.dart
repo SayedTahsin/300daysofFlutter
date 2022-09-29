@@ -85,7 +85,7 @@ class CatalogItem extends StatelessWidget {
                       StadiumBorder(),
                     ),
                   ),
-                  child: "Buy".text.make(),
+                  child: "Add to cart".text.make(),
                 )
               ],
             ).pOnly(right: 30), //! buttonbar padding only on right
