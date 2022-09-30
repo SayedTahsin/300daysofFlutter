@@ -62,7 +62,7 @@ class CatalogItem extends StatelessWidget {
               .center, //! y axis ,content will show in middle form up and down
           children: [
             catalog.name.text.lg
-                .color(MyTheme.darkBluishColor)
+                .color(context.accentColor)
                 .bold
                 .make(), //!extracting name and desc and
             catalog.desc.text
@@ -92,6 +92,6 @@ class CatalogItem extends StatelessWidget {
           ],
         ))
       ],
-    )).white.roundedLg.square(150).make().py16();
+    )).color(context.cardColor).roundedLg.square(150).make().py16();
   }
 }

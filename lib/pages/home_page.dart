@@ -4,6 +4,7 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: MyTheme.darkBluishColor,
         child: Icon(CupertinoIcons.cart),
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
