@@ -1,6 +1,14 @@
+// ignore_for_file: null_closures
+
 class CatalogModel {
-  static List<Item> items=[];
+  static List<Item> items = [];
+
+  static Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  static Item getByPosition(int pos) => items[pos];
 }
+
 class Item {
   final int id;
   final String name;
@@ -15,7 +23,7 @@ class Item {
       required this.color,
       required this.image,
       required this.price});
-  factory Item.fromMap(Map<String, dynamic> map) { 
+  factory Item.fromMap(Map<String, dynamic> map) {
     //! takes data from map and convertin to Item Class
     return Item(
       id: map["id"],
@@ -26,7 +34,8 @@ class Item {
       price: map["price"],
     );
   }
-  toMap() => { //! deos opposite of FromMap
+  toMap() => {
+        //! deos opposite of FromMap
         "id": id,
         "name": name,
         "desc": desc,
